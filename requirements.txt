@@ -1,0 +1,13 @@
+Babel==2.3.3
+Flask==0.10.1
+requests>=2.9.1
+Jinja2==2.8
+PyMySQL>=0.7.2
+Werkzeug==0.10.4
+paramiko==1.16.0
+user-agents==1.0.1
+Flask-SQLALchemy==2.1
+tornado==4.3
+Flask-WTF==0.12
+sqlalchemy-migrate==0.10.0
+

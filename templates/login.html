@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if error %}
+      <div class="alert alert-danger">
+      <strong>Error:</strong> {{ error }}
+      </div>
+  {% endif %}
+    <div class="well col-md-5 center login-box">
+      <h2>登录</h2>
+      <form action="{{ url_for('login') }}" method=post>
+          <span>Username</span><input class="form-control" type=text title="" name=username>
+          <span>Password</span>
+          <input class="form-control" type=password title="" name=password>
+          <br>
+          <input class="btn btn-primary" type=submit value=Login>
+      </form>
+    </div>
+{% endblock %}

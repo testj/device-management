@@ -1,0 +1,3 @@
+ALTER TABLE device ADD COLUMN screen_size VARCHAR(10);
+ALTER TABLE device ADD COLUMN resolution VARCHAR(20);
+ALTER TABLE device ADD COLUMN network_type VARCHAR(30);

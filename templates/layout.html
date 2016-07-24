@@ -1,0 +1,35 @@
+<!doctype html>
+<head>
+    <title>KillRobot</title>
+    <meta charset="UTF-8">
+    <script language="javascript" type="text/javascript" src="{{ url_for('static',filename='WdatePicker.js') }}"></script>
+    <script src="{{ url_for('static',filename='jquery.min.js') }}"></script>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='app.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="navbar-inner">
+      <h1>设备管理系统</h1>
+        <div class="btn-group pull-right">
+          {% if not session.logged_in %}
+              <a href="{{ url_for('login') }}">登录</a>
+          {% else %}
+              <a href="{{ url_for('logout') }}">退出</a>
+          {% endif %}
+        </div>
+      </div>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+         {% if messages %}
+            {% for type,message in messages %}
+                {% if type == 'success' %}
+                    <div class="alert alert-success">{{ message }}</div>
+                {% elif type == 'error' %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% else %}
+                    <div class="alert alert-success">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+         {% endif %}
+      {% endwith %}
+      {% block body %}{% endblock %}
+</body>

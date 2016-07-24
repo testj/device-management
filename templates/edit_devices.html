@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if error %}
+        <div class="alert alert-danger">
+            <strong>Error:</strong> {{ error }}
+        </div>
+    {% endif %}
+
+    <a href="{{ url_for('show_devices') }}">返回查看设备</a>
+
+    {% if session.logged_in %}
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2>设备修改</h2>
+            </div>
+            {% if device %}
+            <div class="box-content">
+                <form action="{{ url_for('update_device') }}" method="post">
+                <dl>
+                    <dd><input type="hidden" name="device_id" size="30" value="{{ device.id }}"></dd>
+                    <dt>设备品牌<i>*</i></dt>
+                    <dd><input type="text" name="device_brand" size="30" value="{{ device.device_brand }}"></dd>
+                    <dt>设备型号<i>*</i></dt>
+                    <dd><input type="text" name="device_model" size="30" value="{{ device.device_model }}"></dd>
+                    <dt>系统<i>*</i></dt>
+                    <dd><input type="text" name="system" size="30" value="{{ device.system }}"></dd>
+                    <dt>系统版本<i>*</i></dt>
+                    <dd><input type="text" name="system_version" size="30" value="{{ device.system_version }}"></dd>
+                    <dt>数量<i>*</i></dt>
+                    <dd><input type="text" name="amount" size="30" value="{{ device.amount }}"></dd>
+                    <dt>屏幕尺寸</dt>
+                    <dd><input type="text" name="screen_size" size="30" value="{{ device.screen_size }}"></dd>
+                    <dt>分辨率</dt>
+                    <dd><input type="text" name="resolution" size="30" value="{{ device.resolution }}"></dd>
+                    <dt>网络制式</dt>
+                    <dd><input type="text" name="network_type" size="30" value="{{ device.network_type }}"></dd>
+                    <dt>创建时间</dt>
+                    <dd><input class="Wdate" type="text" value="{{ device.create_time }}" name="create_time" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})"></dd>
+                    <dt>备注</dt>
+                    <dd><input type="text" name="remark" size="30" value="{{ device.remark }}"></dd>
+                </dl>
+                <input type="submit" name="submit" class="btn btn-primary" value="修改">
+            </form>
+            </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+{% endblock %}
